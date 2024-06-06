@@ -3,7 +3,7 @@ import { EnvConfig } from './get-env';
 
 const environment = EnvConfig.nodeEnv;
 const logLevel = environment === 'development' ? 'debug' : 'info';
-console.log(logLevel);
+console.log(EnvConfig.nodeEnv, logLevel);
 
 const logger = createLogger({
   transports: [
