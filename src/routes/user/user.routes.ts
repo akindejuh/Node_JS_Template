@@ -4,7 +4,7 @@ import { UserController } from '../../controllers/user/user.controller';
 import {
   LoginValidation,
   RegisterValidation,
-} from 'src/schemas/user/user.validation';
+} from '../../schemas/user/user.validation';
 import { RequestValidator } from '../../middlewares/validator/validator';
 
 export class UserRoutesV1 {

@@ -18,7 +18,7 @@ export const signJwt = (
   options: SignOptions = {},
 ) => {
   try {
-    const privateKey = EnvConfig.JwtPrivateKey;
+    const privateKey = EnvConfig.jwtPrivateKey;
     return jwt.sign(payload, String(privateKey), {
       ...options,
       expiresIn: duration,
@@ -33,7 +33,7 @@ export const verifyJwt = (token: string) => {
   try {
     // @ts-ignore
     const publicKey: Secret | GetPublicKeyOrSecret | string =
-      EnvConfig.JwtPrivateKey;
+      EnvConfig.jwtPrivateKey;
     return jwt.verify(token, publicKey);
   } catch (error) {
     return { status: 401, error };

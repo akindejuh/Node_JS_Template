@@ -1,6 +1,6 @@
-import { Application, Request, Response } from "express";
-import setupBaseMiddleware from "./middlewares";
-import { setupUserApiRoutes } from "./user";
+import { Application, Request, Response } from 'express';
+import setupBaseMiddleware from '../middlewares/index';
+import { setupUserApiRoutes } from './user';
 
 export const setupRoutes = (app: Application): void => {
   // ==============================================
@@ -14,7 +14,7 @@ export const setupRoutes = (app: Application): void => {
   setupUserApiRoutes(app);
 
   // base route
-  app.get("/api/v1", (req: Request, res: Response) => {
-    res.status(200).send("backend api/v1");
+  app.get('/api/v1', (req: Request, res: Response) => {
+    res.status(200).send('backend api/v1');
   });
 };

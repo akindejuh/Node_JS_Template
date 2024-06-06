@@ -9,19 +9,18 @@ const getEnv = <T>(name: string): T => {
 };
 
 export const EnvConfig = {
-  serverUri: getEnv<string>('SERVER_PORT'),
+  serverPort: getEnv<string>('PORT'),
+  nodeEnv: getEnv<string>('NODE_ENV'),
   databaseUri: getEnv<string>('MONGODB_URI'),
-  clientUrl: getEnv<string>('CLIENT_URL'),
   minPoolSize: getEnv<string>('MONGODB_MINPOOLSIZE'),
   maxPoolSize: getEnv<string>('MONGODB_MAXPOOLSIZE'),
   mailUser: getEnv<string>('MAIL_USER'),
   mailPassword: getEnv<string>('MAIL_PASSWORD'),
-  JwtPrivateKey: getEnv<string>('JWT_PRIVATE_KEY'),
-  JwtAuthExpiration: getEnv<string>('JWT_AUTH_EXPIRATION'),
-  JwtResetPwdExpiration: getEnv<string>('JWT_RESET_PWD_EXPIRATION'),
-  cloudinaryCloudName: getEnv<string>('cloudinaryCloudName'),
-  cloudinaryApiKey: getEnv<string>('cloudinaryApiSecret'),
-  cloudinaryApiSecret: getEnv<string>('cloudinaryApiSecret'),
-  MulterFileSizeLimit: getEnv<number>('MULTER_FILE_SIZE_LIMIT'),
-  ClientOrigin: getEnv<string>('CLIENT_ORIGIN'),
+  jwtPrivateKey: getEnv<string>('JWT_PRIVATE_KEY'),
+  jwtAuthExpiration: getEnv<string>('JWT_AUTH_EXPIRATION'),
+  cloudinaryCloudName: getEnv<string>('CLOUDINARY_CLOUD_NAME'),
+  cloudinaryApiKey: getEnv<string>('CLOUDINARY_API_KEY'),
+  cloudinaryApiSecret: getEnv<string>('CLOUDINARY_API_SECRET'),
+  multerFileSizeLimit: getEnv<number>('MULTER_FILE_SIZE_LIMIT'),
+  clientOrigin: getEnv<string>('CLIENT_ORIGIN'),
 };

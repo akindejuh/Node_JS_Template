@@ -1,5 +1,5 @@
-import { Profile } from 'src/models/user/profile.model';
-import { ApiServiceResponse } from 'src/utils/api-response';
+import { Profile } from '../../models/user/profile.model';
+import { ApiServiceResponse } from '../../utils/api-response';
 import { UploadedFiles } from '../../types/files';
 
 export default class ProfileServices {

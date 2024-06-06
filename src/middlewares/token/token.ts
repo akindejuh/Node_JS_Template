@@ -1,7 +1,7 @@
 import { Request, Response, NextFunction } from 'express';
 import jwt, { GetPublicKeyOrSecret } from 'jsonwebtoken';
 import { MyJwtPayload } from '../../utils/jwt';
-import { EnvConfig } from 'src/utils/get-env';
+import { EnvConfig } from '../../utils/get-env';
 
 declare global {
   namespace Express {
@@ -23,7 +23,7 @@ export const verifyTokenMiddleware = async (
 
     // @ts-ignore
     const publicKey: Secret | GetPublicKeyOrSecret | string =
-      EnvConfig.JwtPrivateKey;
+      EnvConfig.jwtPrivateKey;
     try {
       const decoded = (await jwt.verify(
         bearer_token,

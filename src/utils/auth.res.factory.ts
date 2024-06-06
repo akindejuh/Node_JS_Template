@@ -8,7 +8,7 @@ export const authResFactory = (
   user: IUser,
   profile: IProfile,
 ) => {
-  const token = signJwt(payload, EnvConfig.JwtAuthExpiration);
+  const token = signJwt(payload, EnvConfig.jwtAuthExpiration);
   if (token) {
     return {
       status: 200,

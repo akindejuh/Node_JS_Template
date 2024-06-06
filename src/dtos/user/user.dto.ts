@@ -1,4 +1,4 @@
-import { IProfile, IUser } from 'src/types/user';
+import { IProfile, IUser } from '../../types/user';
 
 export interface LoginRequest {
   email: string;
