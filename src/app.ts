@@ -19,7 +19,7 @@ import { setupRoutes } from './routes';
 
 const app: Application = express();
 const server = createServer(app);
-const port = EnvConfig.serverPort || 5000;
+const port = Number(EnvConfig.serverPort) || 5000;
 
 // ==============================================
 // Routes API's
