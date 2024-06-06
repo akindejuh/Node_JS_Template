@@ -9,7 +9,7 @@ const getEnv = <T>(name: string): T => {
 };
 
 export const EnvConfig = {
-  serverPort: Number(getEnv<number>('PORT')),
+  serverPort: getEnv<string>('PORT'),
   nodeEnv: getEnv<string>('NODE_ENV'),
   databaseUri: getEnv<string>('MONGODB_URI'),
   minPoolSize: Number(getEnv<number>('MONGODB_MINPOOLSIZE') || ''),
