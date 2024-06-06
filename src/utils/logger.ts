@@ -1,13 +1,13 @@
 import { createLogger, transports, format } from 'winston';
-import { EnvConfig } from './get-env';
+// import { EnvConfig } from './get-env';
 
-const environment = EnvConfig.nodeEnv;
-const logLevel = environment === 'development' ? 'debug' : 'info';
+// const environment = EnvConfig.nodeEnv;
+// const logLevel = environment === 'development' ? 'debug' : 'info';
 
 const logger = createLogger({
   transports: [
     new transports.Console({
-      level: logLevel,
+      level: 'info',
       format: format.combine(
         format.errors({ stack: true }),
         format.prettyPrint(),
