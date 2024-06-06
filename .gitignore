@@ -14,4 +14,6 @@ temp
 /dist
 /build
 
-.env
+*.env
+*.lock
+package-lock.json
