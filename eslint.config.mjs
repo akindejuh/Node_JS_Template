@@ -6,9 +6,41 @@ import prettierPlugin from 'eslint-plugin-prettier';
 
 export default [
   {
+    ignores: [
+      'node_modules/',
+      'build/',
+      'dist/',
+      'android/',
+      'ios/',
+      '*.config.js',
+      '*.config.cjs',
+      '*.config.mjs',
+      '*.config.ts',
+      '*.config.json',
+      '*.log',
+      '.env',
+      '*.env',
+      '.env.local',
+      '.env.development.local',
+      '.env.test.local',
+      '.env.production.local',
+      '*.html',
+      '*.md',
+      '*.png',
+      '*.jpg',
+      '*.jpeg',
+      '*.gif',
+      '*.svg',
+      '*.lock',
+      '*.zip',
+      '*.tar.gz',
+      'scripts/'
+    ]
+  },
+  {
     languageOptions: {
-      globals: globals.browser
-    }
+      globals: globals.browser,
+    },
   },
   pluginJs.configs.recommended,
   ...tseslint.configs.recommended,
@@ -18,6 +50,7 @@ export default [
       prettier: prettierPlugin
     },
     rules: {
+      '@typescript-eslint/no-var-requires': 'off',
       '@typescript-eslint/no-unused-vars': ['error', { 'argsIgnorePattern': '^_' }],
       'prettier/prettier': ['error', { 'singleQuote': true }],
       'no-console': 'warn',

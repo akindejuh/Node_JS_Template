@@ -11,7 +11,8 @@
     "build": "rimraf ./dist && tsc -p .",
     "start-prod": "node dist/app.js",
     "start": "yarn run build && yarn run copy-files && yarn start-prod",
-    "copy-files": "node ./src/scripts/copy-files.js"
+    "copy-files": "node ./src/scripts/copy-files.js",
+    "lint": "eslint ."
   },
   "dependencies": {
     "@levminer/speakeasy": "^1.4.2",
