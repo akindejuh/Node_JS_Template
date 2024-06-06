@@ -1,6 +1,7 @@
 import { db } from '../config';
 import mongoose, { set } from 'mongoose';
 import logger from '../utils/logger';
+import { EnvConfig } from '../utils/get-env';
 
 const { uri, maxPoolSize, minPoolSize } = db;
 
@@ -29,7 +30,9 @@ mongoose
 
 // db connection events
 mongoose.connection.on('connected', () => {
-  logger.debug('Mongoose default connection open to ' + uri);
+  EnvConfig.nodeEnv === 'development'
+    ? logger.debug('Mongoose connected open to ' + uri)
+    : logger.info('Mongoose Connected!');
 });
 
 mongoose.connection.on('error', error => {

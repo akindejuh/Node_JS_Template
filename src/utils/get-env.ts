@@ -1,7 +1,7 @@
 import logger from './logger';
 
 const getEnv = <T>(name: string): T => {
-  const value = process.env[name];
+  const value = process.env?.[name];
   if (value === undefined || value === null) {
     logger.warn(`Environment variable ${name} is required!`);
   }
