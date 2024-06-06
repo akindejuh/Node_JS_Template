@@ -15,6 +15,6 @@ export const setupRoutes = (app: Application): void => {
 
   // base route
   app.get('/api/v1', (req: Request, res: Response) => {
-    res.status(200).send('backend api/v1');
+    res.status(200).send('Backend Template API Service!');
   });
 };
