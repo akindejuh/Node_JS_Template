@@ -8,10 +8,10 @@
   "scripts": {
     "start:dev": "nodemon",
     "start:prod": "node dist/app.js",
-    "start": "yarn build && yarn copy:files && yarn start:prod",
+    "start": "yarn run build && yarn run copy:files && yarn run start:prod",
     "copy:files": "node ./src/scripts/copy-files.js",
     "clean:build": "rm -rf ./dist",
-    "build": "yarn clean:build && tsc -p .",
+    "build": "yarn run clean:build && tsc -p .",
     "dev": "ts-node src/app.ts",
     "lint": "eslint ."
   },
