@@ -2,8 +2,8 @@ import { EnvConfig } from './utils/get-env';
 
 export const db = {
   uri: EnvConfig.databaseUri,
-  minPoolSize: EnvConfig.minPoolSize,
-  maxPoolSize: EnvConfig.maxPoolSize,
+  minPoolSize: parseInt(EnvConfig.minPoolSize, 10),
+  maxPoolSize: parseInt(EnvConfig.maxPoolSize, 10),
 };
 
 export const nodemailerConfig = {
