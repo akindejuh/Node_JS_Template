@@ -27,7 +27,7 @@ export class MulterMiddleware {
   constructor(fileFilters: Record<string, string[]>) {
     this.upload = multer({
       storage: cloudinaryStorage,
-      limits: { fileSize: Number(EnvConfig.multerFileSizeLimit) },
+      limits: { fileSize: EnvConfig.multerFileSizeLimit },
       fileFilter: (
         _: Request,
         file: Express.Multer.File,
