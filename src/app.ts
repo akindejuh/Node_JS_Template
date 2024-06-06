@@ -13,7 +13,7 @@ import express, { Application } from 'express';
 import { createServer } from 'http';
 
 import logger from './utils/logger';
-import './database'; // initialized database
+import './database';
 import { EnvConfig } from './utils/get-env';
 import { setupRoutes } from './routes';
 
