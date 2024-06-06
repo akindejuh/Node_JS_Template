@@ -1,5 +1,5 @@
 #TODO: FILL ALL INFO
-PORT=3001
+SERVER_PORT=3001
 NODE_ENV="development" #development or production
 
 MONGODB_URI="mongodb://127.0.0.1:27017/db-name?retryWrites=true&w=majority" #db-name
