@@ -1,7 +1,8 @@
 import { createLogger, transports, format } from 'winston';
+import { EnvConfig } from './get-env';
 
-const environment = process.env.NODE_ENV;
-const logLevel = environment === 'development' ? 'debug' : 'warn';
+const environment = EnvConfig.nodeEnv;
+const logLevel = environment === 'development' ? 'debug' : 'info';
 
 const logger = createLogger({
   transports: [
@@ -15,7 +16,6 @@ const logger = createLogger({
   ],
 });
 
-// Handle Exceptions
 process.on('UnhandledRejection', error => {
   logger.error('Unhandled Rejection:', error);
 });
