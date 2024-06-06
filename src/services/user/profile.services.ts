@@ -1,10 +1,10 @@
 import { Profile } from '../../models/user/profile.model';
 import { ApiServiceResponse } from '../../utils/api-response';
-import { UploadedFiles } from '../../types/files';
+// import { UploadedFiles } from '../../types/files';
 
 export default class ProfileServices {
   public async updateUserProfileService(
-    files: UploadedFiles,
+    files: any,
     user_id: string,
   ): Promise<ApiServiceResponse<any>> {
     const profile = await Profile.findOne({ user: user_id });
