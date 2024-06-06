@@ -9,11 +9,11 @@ const getEnv = <T>(name: string): T => {
 };
 
 export const EnvConfig = {
-  serverPort: getEnv<string>('SERVER_PORT'),
+  serverPort: Number(getEnv<number>('PORT')),
   nodeEnv: getEnv<string>('NODE_ENV'),
   databaseUri: getEnv<string>('MONGODB_URI'),
-  minPoolSize: Number(getEnv<string>('MONGODB_MINPOOLSIZE') || ''),
-  maxPoolSize: Number(getEnv<string>('MONGODB_MAXPOOLSIZE') || ''),
+  minPoolSize: Number(getEnv<number>('MONGODB_MINPOOLSIZE') || ''),
+  maxPoolSize: Number(getEnv<number>('MONGODB_MAXPOOLSIZE') || ''),
   mailUser: getEnv<string>('MAIL_USER'),
   mailPassword: getEnv<string>('MAIL_PASSWORD'),
   jwtPrivateKey: getEnv<string>('JWT_PRIVATE_KEY'),
