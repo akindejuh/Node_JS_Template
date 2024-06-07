@@ -1,6 +1,9 @@
 import { Response } from 'express';
 import logger from './logger';
 
+/**
+ * Pass the data type this service would return into ApiServiceResponse
+ */
 export interface ApiServiceResponse<T = void> {
   status: number;
   msg?: string;

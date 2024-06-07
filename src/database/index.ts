@@ -15,7 +15,6 @@ const options = {
   connectTimeoutMS: 0,
 };
 
-logger.debug(uri);
 set('strictQuery', true);
 
 // =============================================

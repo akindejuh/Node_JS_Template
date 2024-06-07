@@ -1,6 +1,6 @@
 import { IProfile, IUser } from '../types/user';
 import { AuthResponse } from '../dtos/user/user.dto';
-import { MyJwtPayload, signJwt } from '../utils/jwt';
+import { MyJwtPayload, signJwt } from './jwt';
 import { EnvConfig } from './get-env';
 
 export const authResFactory = (

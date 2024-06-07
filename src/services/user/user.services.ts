@@ -4,9 +4,13 @@ import { Profile } from '../../models/user/profile.model';
 import { hasher } from '../../utils/bcrypt';
 import { ApiServiceResponse } from '../../utils/api-response';
 import logger from '../../utils/logger';
-import { authResFactory } from '../../utils/auth.res.factory';
+import { authResFactory } from '../../utils/auth-res-factory';
 import { startTransaction } from '../../database/db-transaction';
-import { LoginRequest, RegisterRequest } from '../../dtos/user/user.dto';
+import {
+  AuthResponse,
+  LoginRequest,
+  RegisterRequest,
+} from '../../dtos/user/user.dto';
 
 export default class UserServices {
   // =============================================
@@ -14,7 +18,7 @@ export default class UserServices {
   // =============================================
   public async registerUserService(
     user: RegisterRequest,
-  ): Promise<ApiServiceResponse<any>> {
+  ): Promise<ApiServiceResponse<{ token: string; user: AuthResponse }>> {
     const existing_mail = await User.findOne({ email: user.email });
 
     if (existing_mail !== null) {
@@ -60,7 +64,7 @@ export default class UserServices {
   // =============================================
   public async loginUserService(
     user: LoginRequest,
-  ): Promise<ApiServiceResponse<any>> {
+  ): Promise<ApiServiceResponse<{ token: string; user: AuthResponse }>> {
     const { email, password } = user;
     const check_user = await User.findOne({ email });
     if (check_user === null) {
@@ -75,7 +79,7 @@ export default class UserServices {
       logger.warn('User profile not found');
       return {
         status: 401,
-        msg: "You can't login right now, please contact admin",
+        msg: "You can't login at the moment, please contact an admin!",
       };
     }
 

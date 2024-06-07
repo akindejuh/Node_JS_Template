@@ -1,8 +1,12 @@
 import { Request, Response, NextFunction } from 'express';
+import Joi from 'joi';
 
 type ISource = 'body' | 'params' | 'query';
 
-export const RequestValidator = (validation: any, source: ISource) => {
+export const RequestValidator = <T>(
+  validation: Joi.ObjectSchema<T>,
+  source: ISource,
+) => {
   return (req: Request, res: Response, next: NextFunction) => {
     let reqData = {};
 

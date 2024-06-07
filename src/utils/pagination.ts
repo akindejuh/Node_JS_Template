@@ -2,45 +2,6 @@ import { Model, Document, PipelineStage } from 'mongoose';
 import { ESortOrder, ISortOrder } from '../types/pagination';
 import { PageRes } from '../types/pagination';
 
-export const Paging = async <T extends Document>(
-  collection: Model<T>,
-  query: object,
-  startPage: number,
-  limit: number,
-  sort_ord?: ISortOrder,
-  sort_column?: string,
-): Promise<PageRes<T>> => {
-  return PagingBase(
-    collection,
-    query,
-    [],
-    startPage,
-    limit,
-    sort_ord,
-    sort_column,
-  );
-};
-
-export const PagingWithAggregate = async <T extends Document>(
-  collection: Model<T>,
-  query: object,
-  pipeline: PipelineStage[],
-  startPage: number,
-  limit: number,
-  sort_ord?: ISortOrder,
-  sort_column?: string,
-): Promise<PageRes<T>> => {
-  return PagingBase(
-    collection,
-    query,
-    pipeline,
-    startPage,
-    limit,
-    sort_ord,
-    sort_column,
-  );
-};
-
 const PagingBase = async <T extends Document>(
   collection: Model<T>,
   query: object,
@@ -79,4 +40,43 @@ const PagingBase = async <T extends Document>(
       next_page,
     },
   };
+};
+
+export const PagingNoAggregate = async <T extends Document>(
+  collection: Model<T>,
+  query: object,
+  startPage: number,
+  limit: number,
+  sort_ord?: ISortOrder,
+  sort_column?: string,
+): Promise<PageRes<T>> => {
+  return PagingBase(
+    collection,
+    query,
+    [],
+    startPage,
+    limit,
+    sort_ord,
+    sort_column,
+  );
+};
+
+export const PagingWithAggregate = async <T extends Document>(
+  collection: Model<T>,
+  query: object,
+  pipeline: PipelineStage[],
+  startPage: number,
+  limit: number,
+  sort_ord?: ISortOrder,
+  sort_column?: string,
+): Promise<PageRes<T>> => {
+  return PagingBase(
+    collection,
+    query,
+    pipeline,
+    startPage,
+    limit,
+    sort_ord,
+    sort_column,
+  );
 };
