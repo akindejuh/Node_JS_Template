@@ -13,7 +13,8 @@
     "start:prod": "node dist/app.js",
     "start": "yarn run build && yarn run copy:files && yarn run start:prod",
     "copy:files": "node ./src/scripts/copy-assets.js",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "kill:node": "killall node"
   },
   "devDependencies": {
     "@types/bcryptjs": "^2.4.4",
@@ -59,5 +60,10 @@
   },
   "engines": {
     "node": ">=16.14.0"
+  },
+  "resolutions": {
+    "strip-ansi": "6.0.1",
+    "string-width": "4.2.2",
+    "wrap-ansi": "7.0.0"
   }
 }

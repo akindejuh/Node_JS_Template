@@ -1,4 +1,3 @@
-import jwt, { GetPublicKeyOrSecret, Secret } from 'jsonwebtoken';
 import { User } from '../../models/user/user.model';
 import { Profile } from '../../models/user/profile.model';
 import { hasher } from '../../utils/bcrypt';
