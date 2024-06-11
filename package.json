@@ -14,6 +14,7 @@
     "start": "yarn run build && yarn run copy:files && yarn run start:prod",
     "copy:files": "node ./src/scripts/copy-assets.js",
     "lint": "eslint .",
+    "lint:clean": "clear && yarn run lint",
     "kill:node": "killall node"
   },
   "devDependencies": {
