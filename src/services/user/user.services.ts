@@ -1,6 +1,6 @@
 import { User } from '../../models/user/user.model';
 import { Profile } from '../../models/user/profile.model';
-import { hasher } from '../../utils/bcrypt';
+import { bcryptHasher } from '../../utils/bcrypt';
 import { ApiServiceResponse } from '../../utils/api-response';
 import logger from '../../utils/logger';
 import { authResFactory } from '../../utils/auth-res-factory';
@@ -18,7 +18,9 @@ export default class UserServices {
   public async registerUserService(
     user: RegisterRequest,
   ): Promise<ApiServiceResponse<{ token: string; user: AuthResponse }>> {
-    const existing_mail = await User.findOne({ email: user.email });
+    const { email, password, user_name } = user;
+
+    const existing_mail = await User.findOne({ email: email });
 
     if (existing_mail !== null) {
       return { status: 400, msg: 'Existing/Invalid credentials' };
@@ -32,15 +34,15 @@ export default class UserServices {
       const new_user = await User.create(
         [
           {
-            email: user.email,
-            password: await hasher.hashPasswordHandler(user.password),
+            email: email,
+            password: await bcryptHasher.hashPasswordHandler(password),
           },
         ],
         { session },
       );
 
       profile = await Profile.create([
-        { user: new_user[0]._id, user_name: user.user_name },
+        { user: new_user[0]._id, user_name },
         { session },
       ]);
 
@@ -65,6 +67,7 @@ export default class UserServices {
     user: LoginRequest,
   ): Promise<ApiServiceResponse<{ token: string; user: AuthResponse }>> {
     const { email, password } = user;
+
     const check_user = await User.findOne({ email });
     if (check_user === null) {
       return { status: 401, msg: 'Invalid credentials' };
@@ -82,7 +85,7 @@ export default class UserServices {
       };
     }
 
-    const is_password_match = await hasher.comparePassword(
+    const is_password_match = await bcryptHasher.comparePassword(
       password,
       check_user?.password,
     );
