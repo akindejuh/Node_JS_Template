@@ -3,7 +3,7 @@
   // language - current active spelling language
   "language": "en",
   // words - list of words to be always considered correct
-  "words": [],
+  "words": ["cloudinary", "Cloudinary", "fieldname", "dtos", "hasher"],
   // flagWords - list of words to be always considered incorrect
   "flagWords": []
 }

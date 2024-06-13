@@ -21,8 +21,8 @@ export class ProfileRoutesV1 {
   routes() {
     this.router.patch(
       '/user',
-      verifyTokenMiddleware,
       uploadFactory({ profile_image: FileType.IMAGE }),
+      verifyTokenMiddleware,
       this.profile_controller.updateUserProfile,
     );
     this.router.get(

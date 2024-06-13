@@ -4,9 +4,9 @@ import { EnvConfig } from './get-env';
 
 /* eslint-disable no-undef */
 cloudinary.config({
-  cloud_name: process.env.cloudinaryCloudName,
-  api_key: process.env.cloudinaryApiKey,
-  api_secret: process.env.cloudinaryApiSecret,
+  cloud_name: EnvConfig.cloudinaryCloudName,
+  api_key: EnvConfig.cloudinaryApiKey,
+  api_secret: EnvConfig.cloudinaryApiSecret,
   secure: true,
 });
 
