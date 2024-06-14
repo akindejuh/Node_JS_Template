@@ -12,8 +12,8 @@ export const EnvConfig = {
   serverPort: getEnv<string>('PORT'),
   nodeEnv: getEnv<string>('NODE_ENV'),
   databaseUri: getEnv<string>('MONGODB_URI'),
-  minPoolSize: getEnv<string>('MONGODB_MINPOOLSIZE'),
-  maxPoolSize: getEnv<string>('MONGODB_MAXPOOLSIZE'),
+  minPoolSize: getEnv<string>('MONGODB_MIN_POOL_SIZE'),
+  maxPoolSize: getEnv<string>('MONGODB_MAX_POOL_SIZE'),
   mailUser: getEnv<string>('MAIL_USER'),
   mailPassword: getEnv<string>('MAIL_PASSWORD'),
   jwtPrivateKey: getEnv<string>('JWT_PRIVATE_KEY'),
@@ -24,5 +24,4 @@ export const EnvConfig = {
   cloudinaryFolderName: getEnv<string>('CLOUDINARY_FOLDER_NAME'),
   multerFileSizeLimit: getEnv<string>('MULTER_FILE_SIZE_LIMIT'),
   clientOrigin: getEnv<string>('CLIENT_ORIGIN'),
-  appName: getEnv<string>('APP_NAME'),
 };

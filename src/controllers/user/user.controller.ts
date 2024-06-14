@@ -14,7 +14,7 @@ export class UserController {
       const result = await new UserServices().registerUserService(req.body);
       handleApiResponse(res, result);
     } catch (error) {
-      handleServerErrors(res, error);
+      handleServerErrors(req, res, error);
     }
   }
 
@@ -26,7 +26,7 @@ export class UserController {
       const result = await new UserServices().loginUserService(req.body);
       handleApiResponse(res, result);
     } catch (error) {
-      handleServerErrors(res, error);
+      handleServerErrors(req, res, error);
     }
   }
 }

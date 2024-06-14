@@ -1,12 +1,10 @@
 import bcrypt, { genSaltSync } from 'bcryptjs';
 import logger from './logger';
 
-/* eslint-disable no-unused-vars */
 export interface BCHasher {
   hashPasswordHandler(password: string): Promise<string>;
   comparePassword(password: string, hash: string): Promise<boolean>;
 }
-/* eslint-enable no-unused-vars */
 
 class BCryptHasher implements BCHasher {
   public async hashPasswordHandler(password: string): Promise<string> {

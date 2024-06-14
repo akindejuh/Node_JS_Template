@@ -21,7 +21,7 @@ export class ProfileRoutesV1 {
   routes() {
     this.router.patch(
       '/user',
-      uploadFactory({ profile_image: FileType.IMAGE }),
+      uploadFactory({ profile_image: FileType.IMAGE }), // TODO: Temporary till the form-data multer thing is fixed
       verifyTokenMiddleware,
       this.profile_controller.updateUserProfile,
     );

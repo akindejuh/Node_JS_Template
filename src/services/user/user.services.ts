@@ -31,20 +31,14 @@ export default class UserServices {
     let profile;
 
     await startTransaction(async session => {
-      const new_user = await User.create(
-        [
-          {
-            email: email,
-            password: await bcryptHasher.hashPasswordHandler(password),
-          },
-        ],
+      new_user = await User.create(
+        [{ email, password: await bcryptHasher.hashPasswordHandler(password) }],
         { session },
       );
 
-      profile = await Profile.create([
-        { user: new_user[0]._id, user_name },
-        { session },
-      ]);
+      profile = await Profile.create([{ user: new_user[0]._id, user_name }], {
+        session,
+      });
 
       payload = {
         user_id: new_user[0]._id.toString(),
