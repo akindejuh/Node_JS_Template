@@ -432,7 +432,7 @@
 
 "@typescript-eslint/types@7.12.0":
   version "7.12.0"
-  resolved "https://registry.yarnpkg.com/@typescript-eslint/types/-/types-7.12.0.tgz#bf208f971a8da1e7524a5d9ae2b5f15192a37981"
+  resolved "https://registry.yarnpkg.com/@typescript-eslint/interfaces/-/types-7.12.0.tgz#bf208f971a8da1e7524a5d9ae2b5f15192a37981"
   integrity sha512-o+0Te6eWp2ppKY3mLCU+YA9pVJxhUJE15FV7kxuD9jgwIAa+w/ycGJBMrYDTpVGUM/tgpa9SeMOugSabWFq7bg==
 
 "@typescript-eslint/typescript-estree@7.12.0":
