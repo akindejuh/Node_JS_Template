@@ -1,19 +1,19 @@
 'use strict';
 import { Router } from 'express';
-import { UserController } from '../../controllers/user/user.controller';
+import { AuthController } from '../../controllers/user/auth.controller';
 import {
   LoginValidation,
   RegisterValidation,
-} from '../../schemas/user/user.validation';
+} from '../../schemas/user/auth.validation';
 import { RequestValidator } from '../../middlewares/validator/validator';
 
-export class UserRoutesV1 {
+export class AuthRoutesV1 {
   private _router: Router;
-  private userController: UserController;
+  private authController: AuthController;
 
   constructor() {
     this._router = Router();
-    this.userController = new UserController();
+    this.authController = new AuthController();
     this.routes();
   }
 
@@ -25,12 +25,12 @@ export class UserRoutesV1 {
     this.router.post(
       '/register',
       RequestValidator(RegisterValidation, 'body'),
-      this.userController.registerUser,
+      this.authController.registerUser,
     );
     this.router.post(
       '/login',
       RequestValidator(LoginValidation, 'body'),
-      this.userController.loginUser,
+      this.authController.loginUser,
     );
   }
 }

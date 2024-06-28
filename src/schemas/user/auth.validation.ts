@@ -1,5 +1,5 @@
 import Joi from 'joi';
-import { LoginRequest, RegisterRequest } from '../../dtos/user/user.dto';
+import { LoginRequest, RegisterRequest } from '../../dtos/user/auth.dto';
 
 export const LoginValidation = Joi.object<LoginRequest>({
   email: Joi.string().email().required(),

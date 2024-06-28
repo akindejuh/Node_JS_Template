@@ -1,4 +1,4 @@
-import { User } from '../../models/user/user.model';
+import { Auth } from '../../models/user/auth.model';
 import { Profile } from '../../models/user/profile.model';
 import { bcryptHasher } from '../../utils/bcrypt';
 import { ApiServiceResponse } from '../../utils/api-response';
@@ -9,9 +9,9 @@ import {
   AuthResponse,
   LoginRequest,
   RegisterRequest,
-} from '../../dtos/user/user.dto';
+} from '../../dtos/user/auth.dto';
 
-export default class UserServices {
+export default class AuthServices {
   // =============================================
   // Register new user
   // =============================================
@@ -20,7 +20,7 @@ export default class UserServices {
   ): Promise<ApiServiceResponse<{ token: string; user: AuthResponse }>> {
     const { email, password, user_name } = user;
 
-    const existing_mail = await User.findOne({ email: email });
+    const existing_mail = await Auth.findOne({ email: email });
 
     if (existing_mail !== null) {
       return { status: 400, msg: 'Existing/Invalid credentials' };
@@ -31,7 +31,7 @@ export default class UserServices {
     let profile;
 
     await startTransaction(async session => {
-      new_user = await User.create(
+      new_user = await Auth.create(
         [{ email, password: await bcryptHasher.hashPasswordHandler(password) }],
         { session },
       );
@@ -62,7 +62,7 @@ export default class UserServices {
   ): Promise<ApiServiceResponse<{ token: string; user: AuthResponse }>> {
     const { email, password } = user;
 
-    const check_user = await User.findOne({ email });
+    const check_user = await Auth.findOne({ email });
     if (check_user === null) {
       return { status: 401, msg: 'Invalid credentials' };
     }

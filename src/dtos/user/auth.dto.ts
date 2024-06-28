@@ -1,4 +1,4 @@
-import { IProfile, IUser } from '../../interfaces/user';
+import { IProfile, IAuth } from '../../interfaces/user';
 
 export interface LoginRequest {
   email: string;
@@ -13,10 +13,10 @@ export class AuthResponse {
   email?: string;
   user_name?: string;
 
-  static createResponse(user: IUser, profile: IProfile): AuthResponse {
+  static createResponse(auth: IAuth, profile: IProfile): AuthResponse {
     return {
-      email: user.email,
-      user_id: user._id.toString(),
+      email: auth.email,
+      user_id: auth._id.toString(),
       user_name: profile.user_name,
     };
   }
