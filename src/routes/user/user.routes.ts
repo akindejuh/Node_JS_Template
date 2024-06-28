@@ -8,17 +8,17 @@ import {
 import { RequestValidator } from '../../middlewares/validator/validator';
 
 export class UserRoutesV1 {
-  private router_: Router;
+  private _router: Router;
   private userController: UserController;
 
   constructor() {
-    this.router_ = Router();
+    this._router = Router();
     this.userController = new UserController();
     this.routes();
   }
 
   public get router(): Router {
-    return this.router_;
+    return this._router;
   }
 
   routes() {
