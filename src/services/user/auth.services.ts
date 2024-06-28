@@ -20,9 +20,12 @@ export default class AuthServices {
   ): Promise<ApiServiceResponse<{ token: string; user: AuthResponse }>> {
     const { email, password, user_name } = user;
 
-    const existing_mail = await Auth.findOne({ email: email });
+    const [existing_user, existing_profile] = await Promise.all([
+      Auth.findOne({ email }),
+      Profile.findOne({ user_name }),
+    ]);
 
-    if (existing_mail !== null) {
+    if (existing_user || existing_profile) {
       return { status: 400, msg: 'Existing/Invalid credentials' };
     }
 
