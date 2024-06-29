@@ -16,9 +16,9 @@ export default class AuthServices {
   // Register new user
   // =============================================
   public async registerUserService(
-    user: RegisterRequest,
+    body: RegisterRequest,
   ): Promise<ApiServiceResponse<{ token: string; user: AuthResponse }>> {
-    const { email, password, user_name } = user;
+    const { email, password, user_name } = body;
 
     const [existing_user, existing_profile] = await Promise.all([
       Auth.findOne({ email }),
@@ -48,22 +48,21 @@ export default class AuthServices {
       };
     });
 
-    const { status, data } = await authResFactory(
+    return authResFactory(
       // @ts-expect-error dbSession
       payload,
       new_user?.[0],
       profile?.[0],
     );
-    return { status, data };
   }
 
   // =============================================
   // User login
   // =============================================
   public async loginUserService(
-    user: LoginRequest,
+    body: LoginRequest,
   ): Promise<ApiServiceResponse<{ token: string; user: AuthResponse }>> {
-    const { email, password } = user;
+    const { email, password } = body;
 
     const check_user = await Auth.findOne({ email });
     if (check_user === null) {
@@ -91,11 +90,10 @@ export default class AuthServices {
       return { status: 400, msg: 'Invalid credentials' };
     }
 
-    const { status, data } = await authResFactory(
+    return authResFactory(
       { user_id: check_user._id.toString() },
       check_user,
       user_profile,
     );
-    return { status, data };
   }
 }
