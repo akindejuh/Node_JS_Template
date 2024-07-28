@@ -22,7 +22,7 @@ export const RequestValidator = <T>(
     const { error } = validation.validate(reqData, {
       abortEarly: false,
     });
-    if (error !== undefined) {
+    if (error) {
       // TODO: Temp Fix to clear images from DB => Temporary till the form-data multer thing is fixed
       await Cloudinary.cleanUpCloudinary(req?.files);
 
