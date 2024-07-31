@@ -1,7 +1,7 @@
 version: '3.8'
 
 services:
-  # TODO: Enter your project name here
+  # TODO: Enter your project name here // replace 'project_name' with your project name
   project_name:
     build:
       context: .
