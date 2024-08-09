@@ -5,8 +5,8 @@ const path = require('path');
 
 try {
   // TODO: Add non-TS folder paths here
-  const sourceDirectories = ['./src/view/', './src/assets/'];
-  const destinationDirectories = ['./dist/view/', './dist/assets/'];
+  const sourceDirectories = ['./src/view/'];
+  const destinationDirectories = ['./dist/view/'];
 
   if (sourceDirectories.length !== destinationDirectories.length) {
     throw new Error(
